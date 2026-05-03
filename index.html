@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daiane Nails | Nail Design de Luxo</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark-gold: #947a44;
+            --nude-bg: #f9f6f2;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--nude-bg);
+            color: var(--black);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* Menu Mobile Toggle */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('fundoi.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .cta-gold {
+            border: 1px solid var(--gold);
+            padding: 15px 35px;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            background: rgba(197, 160, 89, 0.1);
+            display: inline-block;
+        }
+
+        .cta-gold:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* --- Seção SOBRE A DESIGNER (Nova & Profissional) --- */
+        .designer-section {
+            padding: 120px 10%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            position: relative;
+        }
+
+        .designer-image-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .designer-image-container img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+            filter: sepia(20%);
+        }
+
+        /* Moldura flutuante atrás da foto */
+        .designer-image-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: -40px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            z-index: 1;
+        }
+
+        .designer-info {
+            flex: 1.2;
+        }
+
+        .designer-info span {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .designer-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .designer-info p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-top: 40px;
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        /* --- Serviços --- */
+        .services {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            padding: 40px 20px;
+            border: 1px solid #eee;
+            background: #fff;
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* --- Portfólio --- */
+        .portfolio {
+            padding: 80px 5%;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #e0e0e0;
+            padding: 80px 8% 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #888;
+            list-style: none;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 992px) {
+            .designer-section {
+                flex-direction: column;
+                padding: 80px 8%;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .designer-image-container::before {
+                top: 20px;
+                left: 20px;
+            }
+
+            .signature {
+                border-left: none;
+                border-top: 1px solid var(--gold);
+                padding: 20px 0 0 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                padding-top: 100px;
+                transition: 0.4s;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 20px 0;
+            }
+
+            #menu-toggle:checked~nav {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">DAIANE<span>NAILS</span></div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">A Designer</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p>Master em Nail Art</p>
+            <h1>Arte, Luxo e Bem-Estar.</h1>
+            <a href="https://wa.me/5511987654321" class="cta-gold">Agende sua Consultoria</a>
+        </div>
+    </section>
+
+    <section class="designer-section" id="sobre">
+        <div class="designer-image-container">
+            <img src="Gemini_Generated_Image_bd2mbdbd2mbdbd2m.png" alt="Daiane Nails Designer">
+        </div>
+        <div class="designer-info">
+            <span>A Mente Criativa</span>
+            <h2>Daiane Martins</h2>
+            <p>Com mais de uma década dedicada ao estudo da estética e saúde das unhas, Daiane Martins tornou-se
+                referência em <strong>Nail Design de Luxo</strong>. Sua abordagem combina técnica impecável com um olhar
+                artístico singular.</p>
+            <p>Especialista em Fibra de Vidro e Blindagem Avançada, Daiane acredita que as mãos são o cartão de visitas
+                de toda mulher de sucesso. Seu estúdio foi projetado para oferecer mais que um serviço, uma experiência
+                sensorial completa.</p>
+            <div class="signature">Elevando sua autoestima através de detalhes.</div>
+        </div>
+    </section>
+
+    <section class="services" id="servicos">
+        <h2 class="section-title">Nossas Especialidades</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-gem"></i>
+                <h3>Luxo em Fibra</h3>
+                <p>Alongamentos com estrutura slim, resistência máxima e naturalidade absoluta.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Blindagem Diamante</h3>
+                <p>Camada protetora de alta performance para unhas naturais crescerem sem quebras.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-crown"></i>
+                <h3>Esmaltação Premium</h3>
+                <p>Curadoria de cores e marcas internacionais com durabilidade estendida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="gallery">
+            <div class="gallery-item"><img src="red.png" alt="Job 1"></div>
+            <div class="gallery-item"><img src="clara.png" alt="Job 2"></div>
+            <div class="gallery-item"><img src="vermelha.png" alt="Job 3"></div>
+            <div class="gallery-item"><img src="branca.png" alt="Job 4"></div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">DAIANE NAILS</div>
+                <p>Referência em Nail Art e cuidados de alto padrão.</p>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-title">Consultório</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i><span>Vila Madalena, São Paulo - SP</span></li>
+                    <li><i class="fas fa-phone-alt"></i><span>(11) 98765-4321</span></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-title">Redes Sociais</h4>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: var(--gold); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--gold); font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Daiane Nails. Design Exclusivo.
+        </div>
+    </footer>
+
+</body>
+
+</html>
